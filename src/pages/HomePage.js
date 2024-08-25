@@ -27,7 +27,7 @@ const HomePage = () => {
       <ScrollToTop />
       <NavBar />
 
-      <Intro onVideoLoaded={handleVideoLoaded} />
+      <Intro className="hidden" onVideoLoaded={handleVideoLoaded} />
 
       {!isVideoLoaded && (
         <div className="flex h-screen items-center justify-center">
@@ -37,6 +37,8 @@ const HomePage = () => {
 
       {isVideoLoaded && (
         <>
+          <NavBar />
+          <Intro onVideoLoaded={handleVideoLoaded} />
           <About />
           <Technology />
           {data && <Research data={data.research} />}
