@@ -2,15 +2,29 @@ import React from "react";
 import video from "../assets/introVideo.mp4";
 import { useAnimateContainer } from "../hooks/useAnimateContainer";
 import { LanguageContext } from "../App.js";
-import { useContext } from "react";
-const Intro = ({onVideoLoaded}) => {
+import { useContext, useEffect } from "react";
+const Intro = ({ onVideoLoaded }) => {
   const { languageContext } = useContext(LanguageContext);
   const animateRef = useAnimateContainer();
+  useEffect(() => {
+    const videoElement = document.querySelector("video");
 
-// Video load event handler
-const handleVideoLoaded = () => {
-  onVideoLoaded(true); // Notify the parent component that the video has loaded
-};  return (
+    // Ensuring the video plays inline and does not show the play button on Safari
+    if (videoElement) {
+      videoElement.setAttribute("webkit-playsinline", "");
+      videoElement.setAttribute("playsinline", "");
+
+      // Remove play button overlay
+      videoElement.addEventListener("play", function () {
+        this.style.objectFit = "cover";
+      });
+    }
+  }, []);
+  // Video load event handler
+  const handleVideoLoaded = () => {
+    onVideoLoaded(true); // Notify the parent component that the video has loaded
+  };
+  return (
     <div className="relative mb-[3.75rem] flex items-center lg:justify-center">
       <video
         loop
@@ -21,7 +35,6 @@ const handleVideoLoaded = () => {
         className="relative h-[46.5rem] w-auto min-w-full object-cover brightness-75
         lg:h-[53.5rem] 2xl:h-[61.5rem]"
         onCanPlayThrough={handleVideoLoaded}
-
       >
         <source src={video} type="video/mp4" />
       </video>
@@ -31,7 +44,11 @@ const handleVideoLoaded = () => {
         lg:items-start lg:text-start"
         ref={animateRef}
       >
-        <h6 className="text-white">{languageContext === "english" ? "Green Products for Viet Families" : "Dược Xanh Cho Sức Khỏe Mọi Nhà"}</h6>
+        <h6 className="text-white">
+          {languageContext === "english"
+            ? "Green Products for Viet Families"
+            : "Dược Xanh Cho Sức Khỏe Mọi Nhà"}
+        </h6>
         <h1 className="max-w-[48rem] text-white">
           {languageContext === "english"
             ? "Phuong Minh Pharma"
