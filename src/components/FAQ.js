@@ -2,8 +2,11 @@ import React from "react";
 import pic from "../assets/chevron-down.png";
 import { useState } from "react";
 import classNames from "classnames";
+import { useContext } from "react";
+import { LanguageContext } from "../App";
 
-const FAQ = ({data}) => {
+const FAQ = ({ data }) => {
+  const { languageContext } = useContext(LanguageContext);
   const [visible, setVisible] = useState(Array(data.length).fill(false));
   const handleExpandDropdown = (index) => {
     const newVisible = visible.map((item, i) => {
@@ -19,7 +22,13 @@ const FAQ = ({data}) => {
     <div className="flex flex-col items-center gap-10 px-4 pt-16 md:gap-12 md:pt-20 lg:pt-24 xl:pt-36">
       <div className="flex flex-col gap-5 px-4 text-center">
         <h6 className="text-[#00378A]">FAQ</h6>
-        <h2>Frequently Asked Questions</h2>
+        <h2>
+          {languageContext === "english" ? (
+            <>Frequently Asked Questions</>
+          ) : (
+            <>Câu Hỏi Thường Gặp</>
+          )}
+        </h2>
       </div>
       <div className="w-full max-w-[75rem] justify-between md:flex">
         <div className="flex flex-col gap-4 md:w-[49%]">
@@ -29,11 +38,15 @@ const FAQ = ({data}) => {
                 className="flex cursor-pointer items-start justify-between py-5"
                 onClick={() => handleExpandDropdown(i)}
               >
-                <h6 className="w-[90%]">{item.question}</h6>
+                <h6 className="w-[90%]">
+                  {languageContext === "english"
+                    ? item.question.english
+                    : item.question.vietnamese}
+                </h6>
                 <img
                   src={pic}
                   className={classNames(
-                    "transition-transform duration-500 w-6",
+                    "w-6 transition-transform duration-500",
                     {
                       "-rotate-180 ": visible[i],
                     },
@@ -42,12 +55,14 @@ const FAQ = ({data}) => {
               </div>
               <h6
                 className={classNames(
-                  "flex overflow-hidden text-[#838B93] transition-[max-height] duration-500",
-                  { "max-h-[10rem]": visible[i] },
+                  "flex overflow-hidden text-[#838B93] transition-[max-height] duration-1000",
+                  { "max-h-[20rem]": visible[i] },
                   { "max-h-0": !visible[i] },
                 )}
               >
-                {item.answer}
+                {languageContext === "english"
+                  ? item.answer.english
+                  : item.answer.vietnamese}
               </h6>
             </div>
           ))}
@@ -63,24 +78,34 @@ const FAQ = ({data}) => {
                     handleExpandDropdown(Math.floor(data.length / 2) + i)
                   }
                 >
-                  <h6 className="w-[90%]">{item.question}</h6>
-                  <img src={pic} className={classNames(
-                    "transition-transform duration-500 w-[24px]",
-                    {
-                      "-rotate-180 ": visible[i + Math.floor(data.length / 2)],
-                    },
-                  )} />
+                  <h6 className="w-[90%]">
+                    {languageContext === "english"
+                      ? item.question.english
+                      : item.question.vietnamese}
+                  </h6>
+                  <img
+                    src={pic}
+                    className={classNames(
+                      "w-[24px] transition-transform duration-500",
+                      {
+                        "-rotate-180 ":
+                          visible[i + Math.floor(data.length / 2)],
+                      },
+                    )}
+                  />
                 </div>
                 <h6
                   className={classNames(
-                    "flex overflow-hidden text-[#838B93] transition-[max-height] duration-500",
+                    "flex overflow-hidden text-[#838B93] transition-[max-height] duration-1000",
                     {
-                      "max-h-[10rem]": visible[i + Math.floor(data.length / 2)],
+                      "max-h-[20rem]": visible[i + Math.floor(data.length / 2)],
                     },
                     { "max-h-0": !visible[i + Math.floor(data.length / 2)] },
                   )}
                 >
-                  {item.answer}
+                  {languageContext === "english"
+                    ? item.answer.english
+                    : item.answer.vietnamese}
                 </h6>
               </div>
             ))}

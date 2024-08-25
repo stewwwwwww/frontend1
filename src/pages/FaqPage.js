@@ -15,7 +15,6 @@ const FaqPage = () => {
       <StaticNavBar />
       <FaqIntro />
       <FAQ data={data}/>
-      <SimpleMap />
       <Footer />
 
     </div>

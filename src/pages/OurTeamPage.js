@@ -22,7 +22,6 @@ const OurTeamPage = () => {
           <OurTeamMembers data={data.member} />
           <Contact />
           <FAQ data={data.faq} />
-          <SimpleMap />
           <Footer />
         </>
       ) : (

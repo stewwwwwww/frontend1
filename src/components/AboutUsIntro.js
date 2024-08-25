@@ -4,7 +4,7 @@ const AboutUsIntro = () => {
   return (
     <div className="flex flex-col items-center gap-16 gap-24 px-4 md:gap-20 xl:gap-24">
       <div className=" flex max-w-[75rem]  flex-col pt-24 text-center md:pt-32 lg:pt-44">
-        <div className="xl-gap-7 flex flex-col justify-between gap-10 md:gap-12 lg:flex-row lg:gap-5">
+        <div className="xl-gap-7 flex flex-col justify-between gap-10 md:gap-12 lg:flex-row lg:gap-24">
           <div className="flex flex-col gap-5 lg:text-start">
             <h6 className="text-[#00378A]">About Us</h6>
             <h1>Learn More About Our Company</h1>

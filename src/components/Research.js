@@ -61,7 +61,7 @@ const Research = ({ data }) => {
                   ? item.description.english
                   : item.description.vietnamese}
               </p>
-              <a className="text-[#00378A]">Learn More</a>
+              <a className="text-[#00378A]">{languageContext === "english" ? <>Learn More</>: <>Tìm hiểu Thêm</>}</a>
             </div>
           );
         })}

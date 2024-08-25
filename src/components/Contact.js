@@ -4,7 +4,10 @@ import { useState } from "react";
 import { useAnimateContainer } from "../hooks/useAnimateContainer";
 import validator from "validator";
 import classNames from "classnames";
+import { useContext } from "react";
+import { LanguageContext } from "../App";
 const Contact = () => {
+  const { languageContext } = useContext(LanguageContext);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -38,27 +41,27 @@ const Contact = () => {
     e.preventDefault();
     if (!firstName) {
       setNoticeErr(true);
-      setNotice("First Name is required");
+      setNotice({english: "First Name is required", vietnamese: "Yêu cầu điền Tên"});
       return;
     }
     if (!lastName) {
       setNoticeErr(true);
-      setNotice("Last Name is required");
+      setNotice({english: "Last Name is required", vietnamese: "Yêu cầu điền Họ"});
       return;
     }
     if (!phoneNumber) {
       setNoticeErr(true);
-      setNotice("Phone Number is required");
+      setNotice({english: "Phone Number is required", vietnamese: "Yêu cầu điền Số Điện Thoại"});
       return;
     }
     if (email && !validator.isEmail(email)) {
       setNoticeErr(true);
-      setNotice("Email entered is not valid");
+      setNotice({english: "Email entered is not valid", vietnamese: "Email không hợp lệ"});
       return;
     }
     if (!validator.isMobilePhone(phoneNumber) || phoneNumber.length < 9) {
       setNoticeErr(true);
-      setNotice("Phone Number entered is not valid");
+      setNotice({english: "Phone Number is not valid", vietnamese: "Số Điện Thoại không hợp lệ"});
       return;
     }
 
@@ -99,8 +102,16 @@ const Contact = () => {
       xl:py-36 xl:pl-[calc(50%-37.5rem)] 2xl:w-[56%] 2xl:pr-10"
         ref={animationRef1}
       >
-        <h6 className="text-white">Contact Us</h6>
-        <h2 className="text-white">Get In Touch To Get More Information!</h2>
+        <h6 className="text-white">
+          {languageContext === "english" ? <>Contact Us</> : <>Liên Hệ</>}
+        </h6>
+        <h2 className="text-white">
+          {languageContext === "english" ? (
+            <>Get In Touch To Get More Information!</>
+          ) : (
+            <>Tìm Hiểu Thêm Thông Tin</>
+          )}
+        </h2>
         <form
           className="flex flex-col"
           ref={animationRef2}
@@ -117,7 +128,7 @@ const Contact = () => {
               name="customerName"
               value={firstName}
               onChange={handleFirstNameChange}
-              placeholder="First Name *"
+              placeholder={languageContext === "english"? "First Name *": "Tên *"}
             />
             <input
               className="mb-5 h-16 w-full rounded-lg border-[0.0625rem] 
@@ -128,7 +139,7 @@ const Contact = () => {
               name="customerName"
               value={lastName}
               onChange={handleLastNameChange}
-              placeholder="Last Name *"
+              placeholder={languageContext === "english"? "Last Name *": "Họ *"}
             />
           </div>
           <div className="flex flex-col gap-x-5 xl:flex-row">
@@ -141,7 +152,7 @@ const Contact = () => {
               name="customerPhoneNum"
               value={phoneNumber}
               onChange={handlePhoneNumberChange}
-              placeholder="Phone Number *"
+              placeholder={languageContext === "english"? "Phone Number *": "Số Điện Thoại *"}
             />
             <input
               className="mb-5 h-16 w-full rounded-lg border-[0.0625rem] 
@@ -162,7 +173,7 @@ const Contact = () => {
             name="customerMessage"
             value={message}
             onChange={handleMessageChange}
-            placeholder="Message"
+            placeholder={languageContext === "english"? "Message": "Lời Nhắn"}
           />
           <div
             className="mt-10 flex flex-col items-center gap-5 lg:items-start xl:flex-row-reverse 
@@ -175,15 +186,15 @@ const Contact = () => {
                 { "text-green-500": !noticeErr },
               )}
             >
-              {notice}
+              {languageContext === "english" ? notice.english : notice.vietnamese}
             </p>
             <div className="flex flex-row xl:flex-col">
-              <p className="text-white">Call Us at &nbsp;</p>
+              <p className="text-white">{languageContext === "english"? "Call us at": "Gọi chúng tôi"} &nbsp;</p>
               <p className="text-white">(+84) 0911 229 111</p>
             </div>
             <input
               type="submit"
-              value="Send"
+              value={languageContext === "english"? "Send": "Gửi"}
               className="h-16 w-[12rem] cursor-pointer rounded-[2rem] border-[0.1rem] border-white bg-white
             font-[Inter,sans-serif] text-[1.25rem] text-[#00378A] transition-colors duration-300 ease-in-out
         hover:bg-[#00378A] hover:text-white lg:font-medium"

@@ -16,7 +16,6 @@ const ContactUsPage = () => {
       <ContactUsIntro />
       <Contact />
       <FAQ data={data} />
-      <SimpleMap />
       <Footer />
     </div>
   );

@@ -29,7 +29,6 @@ const AboutUsPage = () => {
       {data ? <Research data={data.research} /> : <></>}
       {data ? <Products data={data.product} /> : <></>}
       {data ? <FAQ data={data.faq} /> : <></>}
-      <SimpleMap />
       <Footer />
 
     </div>
