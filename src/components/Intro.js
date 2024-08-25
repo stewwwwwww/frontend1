@@ -3,10 +3,14 @@ import video from "../assets/introVideo.mp4";
 import { useAnimateContainer } from "../hooks/useAnimateContainer";
 import { LanguageContext } from "../App.js";
 import { useContext } from "react";
-const Intro = () => {
+const Intro = ({onVideoLoaded}) => {
   const { languageContext } = useContext(LanguageContext);
   const animateRef = useAnimateContainer();
-  return (
+
+// Video load event handler
+const handleVideoLoaded = () => {
+  onVideoLoaded(true); // Notify the parent component that the video has loaded
+};  return (
     <div className="relative mb-[3.75rem] flex items-center lg:justify-center">
       <video
         loop
@@ -15,6 +19,8 @@ const Intro = () => {
         autoPlay
         className="relative h-[46.5rem] w-auto min-w-full object-cover brightness-75
         lg:h-[53.5rem] 2xl:h-[61.5rem]"
+        onLoadedData={handleVideoLoaded}
+
       >
         <source src={video} type="video/mp4" />
       </video>

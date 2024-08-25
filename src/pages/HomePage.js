@@ -9,26 +9,43 @@ import Research from "../components/Research";
 import Contact from "../components/Contact";
 import Articles from "../components/Articles";
 import Footer from "../components/Footer";
-import SimpleMap from "../components/SimpleMap";
 import ScrollToTop from "../utils/ScrollToTop";
-
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 const HomePage = () => {
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const data = useLoaderData();
+
+  // Handler to update the state when the video is loaded
+  const handleVideoLoaded = (loaded) => {
+    setIsVideoLoaded(loaded);
+  };
 
   return (
     <div>
       <ScrollToTop />
-      <NavBar />
-      <Intro />
-      <About />
-      <Technology />
-      {data ? <Research data={data.research} /> : <></>}
-      {data ? <Products data={data.product} /> : <></>}
-      <Contact />
-      {data ? <Articles data={data.article} /> : <></>}
-      <Footer />
+
+      <Intro onVideoLoaded={handleVideoLoaded} />
+
+      {!isVideoLoaded && (
+        <div className="flex h-screen items-center justify-center">
+          <p>Loading...</p>
+        </div>
+      )}
+
+      {isVideoLoaded && (
+        <>
+          <NavBar />
+          <About />
+          <Technology />
+          {data && <Research data={data.research} />}
+          {data && <Products data={data.product} />}
+          <Contact />
+          {data && <Articles data={data.article} />}
+          <Footer />
+        </>
+      )}
     </div>
   );
 };
