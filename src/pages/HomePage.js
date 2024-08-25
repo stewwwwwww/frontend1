@@ -25,6 +25,7 @@ const HomePage = () => {
   return (
     <div>
       <ScrollToTop />
+      <NavBar />
 
       <Intro onVideoLoaded={handleVideoLoaded} />
 
@@ -36,7 +37,6 @@ const HomePage = () => {
 
       {isVideoLoaded && (
         <>
-          <NavBar />
           <About />
           <Technology />
           {data && <Research data={data.research} />}
