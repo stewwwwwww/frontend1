@@ -17,6 +17,7 @@ const handleVideoLoaded = () => {
         preload="auto"
         muted
         autoPlay
+        controls={false}
         className="relative h-[46.5rem] w-auto min-w-full object-cover brightness-75
         lg:h-[53.5rem] 2xl:h-[61.5rem]"
         onCanPlayThrough={handleVideoLoaded}
