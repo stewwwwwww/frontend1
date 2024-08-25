@@ -14,38 +14,35 @@ import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 const HomePage = () => {
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [isContentLoaded, setIsContentLoaded] = useState(false);
   const data = useLoaderData();
 
-  // Handler to update the state when the video is loaded
-  const handleVideoLoaded = (loaded) => {
-    setIsVideoLoaded(loaded);
+  const handleContentLoaded = () => {
+    setIsContentLoaded(true);
   };
 
   return (
     <div>
       <ScrollToTop />
-      <NavBar />
 
-      <Intro onVideoLoaded={handleVideoLoaded} />
-
-      {!isVideoLoaded && (
-        <div className="flex h-screen items-center justify-center">
-          <p>Loading...</p>
+      {!isContentLoaded && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-white">
+          <p>Loading...</p>{" "}
+          {/* Replace this with a spinner or any loading animation */}
         </div>
       )}
 
-      {isVideoLoaded && (
-        <>
-          <About />
-          <Technology />
-          {data && <Research data={data.research} />}
-          {data && <Products data={data.product} />}
-          <Contact />
-          {data && <Articles data={data.article} />}
-          <Footer />
-        </>
-      )}
+      <div style={{ display: isContentLoaded ? "block" : "none" }}>
+        <NavBar />
+        <Intro onVideoLoaded={handleContentLoaded} />
+        <About />
+        <Technology />
+        {data && <Research data={data.research} />}
+        {data && <Products data={data.product} />}
+        <Contact />
+        {data && <Articles data={data.article} />}
+        <Footer />
+      </div>
     </div>
   );
 };
