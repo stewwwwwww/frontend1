@@ -7,16 +7,21 @@ const Intro = ({ onVideoLoaded }) => {
   const { languageContext } = useContext(LanguageContext);
   const animateRef = useAnimateContainer();
   useEffect(() => {
-    const videoElement = document.querySelector("video");
-
-    // Ensuring the video plays inline and does not show the play button on Safari
+    const videoElement = document.querySelector('video');
+  
+    // Ensure the video plays inline and does not show the play button on Safari
     if (videoElement) {
-      videoElement.setAttribute("webkit-playsinline", "");
-      videoElement.setAttribute("playsinline", "");
-
-      // Remove play button overlay
-      videoElement.addEventListener("play", function () {
-        this.style.objectFit = "cover";
+      videoElement.setAttribute('webkit-playsinline', '');
+      videoElement.setAttribute('playsinline', '');
+  
+      // Use JavaScript to hide the play button after loading
+      videoElement.addEventListener('loadeddata', () => {
+        setTimeout(() => {
+          const playButton = videoElement.querySelector('::-webkit-media-controls-play-button');
+          if (playButton) {
+            playButton.style.display = 'none';
+          }
+        }, 100); // Delay to ensure button is rendered before hiding
       });
     }
   }, []);

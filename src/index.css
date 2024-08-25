@@ -50,7 +50,15 @@ video::-webkit-media-controls-enclosure {
 video::controls {
   display: none !important;
 }
+@supports (-webkit-touch-callout: none) {
+  video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+  }
 
+  video::-webkit-media-controls {
+    display: none !important;
+  }
+}
 video::-webkit-media-controls-play-button {
   display: none !important;
   -webkit-appearance: none;
