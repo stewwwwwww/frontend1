@@ -88,7 +88,6 @@ const ProductsList = ({ data }) => {
 
     e.preventDefault();
   };
-
   return (
     <div className="flex flex-col items-center gap-20 py-16 md:py-20 lg:py-24 xl:py-36">
       <h6 className="text-[#00378A]">
@@ -170,7 +169,11 @@ const ProductsList = ({ data }) => {
                       })}
                       to={`/Products/${category.category.english.replaceAll(/\s/g, "-")}/${product.name.english.replaceAll(/\s/g, "-")}`}
                     >
-                      {languageContext === "english" ? <>Read more</> : <>Tìm hiểu thêm</>}
+                      {languageContext === "english" ? (
+                        <>Read more</>
+                      ) : (
+                        <>Tìm hiểu thêm</>
+                      )}
                     </Link>
 
                     <div className="mt-14 flex justify-between gap-2">
@@ -182,9 +185,13 @@ const ProductsList = ({ data }) => {
                         data-productPrice={product.price}
                         data-productPromotionPrice={product.promotionPrice}
                         data-productImg={product.img}
-                        className="cursor-pointer text-nowrap rounded-[0.625rem] underline px-4 py-[0.375rem] text-white"
+                        className="cursor-pointer text-nowrap rounded-[0.625rem] px-4 py-[0.375rem] text-white underline"
                       >
-                        {languageContext === "english" ? <>Add To Cart</> : <>Thêm Vào Giỏ</>}
+                        {languageContext === "english" ? (
+                          <>Add To Cart</>
+                        ) : (
+                          <>Thêm Vào Giỏ</>
+                        )}
                       </h5>
                     </div>
                   </div>
