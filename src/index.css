@@ -13,6 +13,24 @@
     scrollbar-width: none; /* Firefox */
   }
 }
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
+
+video::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
+
+/* This is for other browsers that might not respect the WebKit-specific rules */
+video::-moz-media-controls-start-playback-button {
+  display: none !important;
+}
+
+video::before {
+  content: none !important;
+}
 video::-webkit-media-controls {
   display: none !important;
 }
