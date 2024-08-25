@@ -1,18 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/companyLogo.png";
-import dashboardwhite from "../assets/darhboardwhite.png";
 import dashboardblack from "../assets/darhboardblack.png";
-import tiktokWhite from "../assets/tiktokwhite.svg";
 import tiktokBlack from "../assets/tiktokblack.svg";
-import facebookWhite from "../assets/facebookwhite.svg";
 import facebookBlack from "../assets/facebookblack.svg";
-import zaloWhite from "../assets/zalowhite.svg";
 import zaloBlack from "../assets/zaloblack.svg";
 import close from "../assets/close.png";
 import chevronDown from "../assets/chevron-down.png";
 import classNames from "classnames";
-import bagwhite from "../assets/bagwhite.png";
 import bagblack from "../assets/bagblack.png";
 import deleteIcon from "../assets/delete.svg";
 import { useEffect, useRef, useState } from "react";
@@ -337,22 +332,9 @@ const NavBar = () => {
           })}
         </div>
       </div>
-      <div
-        className={classNames(
-          "fixed z-30 flex w-full items-center justify-between px-4 lg:px-12",
-          {
-            " bg-transparent": scrollY === 0,
-            " bg-white": scrollY !== 0,
-          },
-        )}
-      >
+      <div className="fixed z-30 flex w-full items-center justify-between bg-white px-4 lg:px-12">
         <img src={logo} alt="logo" className="center h-12 w-12"></img>
-        <div
-          className={classNames("hidden justify-center text-center lg:flex", {
-            "text-white": scrollY === 0,
-            "text-[#00183C]": scrollY !== 0,
-          })}
-        >
+        <div className="hidden justify-center text-center text-[#00183C] lg:flex">
           {navList.map((item) => {
             if (!("dropdown" in item)) {
               return (
@@ -416,18 +398,14 @@ const NavBar = () => {
         </div>
         <div className="flex items-center gap-12">
           <div className="relative cursor-pointer" onClick={handleOpenCart}>
-            <img
-              src={scrollY === 0 ? bagwhite : bagblack}
-              alt="dashboard"
-              className="h-10"
-            ></img>
+            <img src={bagblack} alt="dashboard" className="h-10"></img>
             <p className="absolute bottom-[1.125rem] left-[1.225rem] rounded-lg bg-[#00378A] px-[0.475rem] py-[0.2rem] text-center text-sm text-white">
               {cartContext.quantity < 100 ? cartContext.quantity : "99+"}
             </p>
           </div>
 
           <img
-            src={scrollY === 0 ? dashboardwhite : dashboardblack}
+            src={dashboardblack}
             alt="dashboard"
             className="h-9 w-9 cursor-pointer lg:hidden lg:h-0 lg:w-0"
             onClick={handleOpenNavBar}
@@ -435,17 +413,17 @@ const NavBar = () => {
           <div className="hidden h-8 gap-6 lg:flex ">
             <img
               className="h-8 w-8 cursor-pointer"
-              src={scrollY === 0 ? facebookWhite : facebookBlack}
+              src={facebookBlack}
               onClick={handleOpenFacebook}
             ></img>
             <img
               className="h-8 w-8 cursor-pointer"
-              src={scrollY === 0 ? tiktokWhite : tiktokBlack}
+              src={tiktokBlack}
               onClick={handleOpenTiktok}
             ></img>
             <img
               className="h-8 w-8 cursor-pointer"
-              src={scrollY === 0 ? zaloWhite : zaloBlack}
+              src={zaloBlack}
               onClick={handleOpenZalo}
             ></img>
           </div>
@@ -454,19 +432,17 @@ const NavBar = () => {
       <div className="fixed bottom-4 left-4 z-[9999] flex flex-col gap-6 lg:hidden">
         <img
           className="h-10 w-10 cursor-pointer"
-          src={
-            scrollY + window.innerHeight < 744 ? facebookWhite : facebookBlack
-          }
+          src={facebookBlack}
           onClick={handleOpenFacebook}
         ></img>
         <img
           className="h-10 w-10 cursor-pointer"
-          src={scrollY + window.innerHeight < 744 ? tiktokWhite : tiktokBlack}
+          src={tiktokBlack}
           onClick={handleOpenTiktok}
         ></img>
         <img
           className="h-10 w-10 cursor-pointer"
-          src={scrollY + window.innerHeight < 744 ? zaloWhite : zaloBlack}
+          src={zaloBlack}
           onClick={handleOpenZalo}
         ></img>
       </div>
