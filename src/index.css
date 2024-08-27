@@ -13,61 +13,7 @@
     scrollbar-width: none; /* Firefox */
   }
 }
-video::-webkit-media-controls-start-playback-button {
-  display: none !important;
-  -webkit-appearance: none;
-}
 
-video::-webkit-media-controls-overlay-play-button {
-  display: none !important;
-  -webkit-appearance: none;
-}
-
-/* This is for other browsers that might not respect the WebKit-specific rules */
-video::-moz-media-controls-start-playback-button {
-  display: none !important;
-}
-
-video::before {
-  content: none !important;
-}
-video::-webkit-media-controls {
-  display: none !important;
-}
-
-video::-moz-media-controls {
-  display: none !important;
-}
-
-video::-ms-media-controls {
-  display: none !important;
-}
-
-video::-webkit-media-controls-enclosure {
-  display: none !important;
-}
-
-video::controls {
-  display: none !important;
-}
-@supports (-webkit-touch-callout: none) {
-  video::-webkit-media-controls-start-playback-button {
-    display: none !important;
-  }
-
-  video::-webkit-media-controls {
-    display: none !important;
-  }
-}
-video::-webkit-media-controls-play-button {
-  display: none !important;
-  -webkit-appearance: none;
-}
-
-video::-webkit-media-controls-start-playback-button {
-  display: none !important;
-  -webkit-appearance: none;
-}
 p {
   @apply font-[Inter,sans-serif] lg:font-medium;
 }

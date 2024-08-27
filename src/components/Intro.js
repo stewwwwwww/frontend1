@@ -2,29 +2,10 @@ import React from "react";
 import video from "../assets/introVideo.mp4";
 import { useAnimateContainer } from "../hooks/useAnimateContainer";
 import { LanguageContext } from "../App.js";
-import { useContext, useEffect } from "react";
+import { useContext} from "react";
 const Intro = ({ onVideoLoaded }) => {
   const { languageContext } = useContext(LanguageContext);
   const animateRef = useAnimateContainer();
-  useEffect(() => {
-    const videoElement = document.querySelector('video');
-  
-    // Ensure the video plays inline and does not show the play button on Safari
-    if (videoElement) {
-      videoElement.setAttribute('webkit-playsinline', '');
-      videoElement.setAttribute('playsinline', '');
-  
-      // Use JavaScript to hide the play button after loading
-      videoElement.addEventListener('loadeddata', () => {
-        setTimeout(() => {
-          const playButton = videoElement.querySelector('::-webkit-media-controls-play-button');
-          if (playButton) {
-            playButton.style.display = 'none';
-          }
-        }, 100); // Delay to ensure button is rendered before hiding
-      });
-    }
-  }, []);
   // Video load event handler
   const handleVideoLoaded = () => {
     onVideoLoaded(true); // Notify the parent component that the video has loaded
@@ -39,7 +20,7 @@ const Intro = ({ onVideoLoaded }) => {
         autoPlay
         className="relative h-[46.5rem] w-auto min-w-full object-cover brightness-75
         lg:h-[53.5rem] 2xl:h-[61.5rem]"
-        onCanPlayThrough={handleVideoLoaded}
+        onCanPlay={handleVideoLoaded}
       >
         <source src={video} type="video/mp4" />
       </video>
