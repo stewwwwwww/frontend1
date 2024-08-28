@@ -42,7 +42,7 @@ const ResearchList = ({ data }) => {
           return (
             <div
               className={classNames(
-                "shadowContainer flex flex-col items-start gap-5 rounded-[0.625rem] border-2 p-5 text-start sm:p-8 md:w-[48%] lg:w-full lg:p-5",
+                "shadowContainer flex h-[36rem] flex-col items-start gap-5 rounded-[0.625rem] border-2 p-5 text-start sm:p-8 md:w-[48%] lg:w-full lg:p-5",
                 { containerHover: isDesktop },
               )}
             >
@@ -57,7 +57,7 @@ const ResearchList = ({ data }) => {
                   ? research.name.english
                   : research.name.vietnamese}
               </h4>
-              <p className="text-[#838B93]">
+              <p className="text-[#838B93] text-ellipsis">
                 {languageContext === "english"
                   ? research.description.english
                   : research.description.vietnamese}

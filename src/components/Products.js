@@ -11,33 +11,35 @@ const Products = ({ data }) => {
   const animationRef2 = useAnimateContainer();
   const [productImg, setProductImg] = useState(data[0].productList[0].img);
   const [productName, setProductName] = useState(
-    languageContext === "english"
-      ? data[0].productList[0].name.english
-      : data[0].productList[0].name.vietnamese,
+    {
+      english: data[0].productList[0].name.english,
+      vietnamese: data[0].productList[0].name.vietnamese,
+    }
   );
-  const [productDescription, setProductDescription] = useState(
-    languageContext === "english"
-      ? data[0].productList[0].description.english
-      : data[0].productList[0].description.vietnamese,
-  );
+  const [productDescription, setProductDescription] = useState({
+    english: data[0].productList[0].description.english,
+    vietnamese: data[0].productList[0].description.vietnamese,
+  });
   const handleToggleProdyct = (e) => {
     setProductImg(
       data[0].productList[e.target.getAttribute("data-productIdx")].img,
     );
-    setProductName(
-      languageContext === "english"
-        ? data[0].productList[e.target.getAttribute("data-productIdx")].name
-            .english
-        : data[0].productList[e.target.getAttribute("data-productIdx")].name
-            .vietnamese,
-    );
-    setProductDescription(
-      languageContext === "english"
-        ? data[0].productList[e.target.getAttribute("data-productIdx")]
-            .description.english
-        : data[0].productList[e.target.getAttribute("data-productIdx")]
-            .description.vietnamese,
-    );
+    setProductName({
+      english:
+        data[0].productList[e.target.getAttribute("data-productIdx")].name
+          .english,
+      vietnamese:
+        data[0].productList[e.target.getAttribute("data-productIdx")].name
+          .vietnamese,
+    });
+    setProductDescription({
+      english:
+        data[0].productList[e.target.getAttribute("data-productIdx")]
+          .description.english,
+      vietnamese:
+        data[0].productList[e.target.getAttribute("data-productIdx")]
+          .description.vietnamese,
+    });
   };
 
   return (
@@ -88,17 +90,21 @@ const Products = ({ data }) => {
             className="h-[19rem] object-cover md:h-auto md:w-[50%]"
           />
           <div className="flex flex-col gap-5 text-start">
-            <h4 className="text-[#00378A]">{productName}</h4>
-            <p className="text-[#838B93]">{productDescription}</p>
+            <h4 className="text-[#00378A]">
+              {languageContext === "english"
+                ? productName.english
+                : productName.vietnamese}
+            </h4>
+            <p className="text-[#838B93]">
+              {languageContext === "english"
+                ? productDescription.english
+                : productDescription.vietnamese}
+            </p>
             <Link
-              to={`/Products/${data[0].category.english.replaceAll(/\s/g, "-")}/${productName.replaceAll(/\s/g, "-")}`}
+              to={`/Products/${data[0].category.english.replaceAll(/\s/g, "-")}/${productName.english.replaceAll(/\s/g, "-")}`}
               className="mt-7 text-[#00378A]"
             >
-              {languageContext === "english" ? (
-                <>Learn more</>
-              ) : (
-                <>Xem Thêm</>
-              )}
+              {languageContext === "english" ? <>Learn more</> : <>Xem Thêm</>}
             </Link>
           </div>
         </div>

@@ -39,7 +39,7 @@ const Research = ({ data }) => {
           return (
             <div
               className={classNames(
-                "shadowContainer mx-4 flex flex-col items-start gap-5 rounded-[0.625rem] border-2 p-5 text-start sm:p-8 md:mx-0 md:w-[48%] lg:w-[31.2%] lg:p-5",
+                "shadowContainer mx-4 flex h-[36rem] flex-col items-start gap-5 rounded-[0.625rem] border-2 p-5 text-start sm:p-8 md:mx-0 md:w-[48%] lg:w-[31.2%] lg:p-5",
                 { containerHover: isDesktop },
                 {
                   "md:left-1/2 md:translate-x-1/2 lg:left-0 lg:translate-x-0":
@@ -56,7 +56,7 @@ const Research = ({ data }) => {
                   ? item.name.english
                   : item.name.vietnamese}
               </h4>
-              <p className="text-[#838B93]">
+              <p className="text-[#838B93] text-ellipsis">
                 {languageContext === "english"
                   ? item.description.english
                   : item.description.vietnamese}
