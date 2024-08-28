@@ -108,7 +108,7 @@ const ArticlesList = ({ data }) => {
                     : article.description.vietnamese}
                 </p>
                 <Link
-                  to={`/Insights/Articles/${languageContext === "english" ? article.name.english : article.name.vietnamese}`.replaceAll(
+                  to={`/Insights/Articles/${article.name.english}`.replaceAll(
                     /\s/g,
                     "-",
                   )}
