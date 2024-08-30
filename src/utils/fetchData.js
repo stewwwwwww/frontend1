@@ -44,7 +44,7 @@ export const fetchArticle = async ({ params }) => {
 };
 export const fetchResearchs = async () => {
   try {
-    const response = await fetch(`${api}/researchs`);
+    const response = await fetch(`${api}/researches`);
     if (!response.ok) throw new Error("Failed to fetch products");
     return await response.json();
   } catch (err) {
@@ -54,7 +54,7 @@ export const fetchResearchs = async () => {
 };
 export const fetchResearch = async ({ params }) => {
   try {
-    const response = await fetch(`${api}/researchs/${params.ResearchId}`);
+    const response = await fetch(`${api}/researches/${params.ResearchId}`);
     if (!response.ok) throw new Error("Failed to fetch products");
     return await response.json();
   } catch (err) {
@@ -70,7 +70,7 @@ export const fetchHome = async () => {
     });
     if (!productResponse.ok) throw new Error("Failed to fetch products");
 
-    const researchResponse = await fetch(`${api}/researchs`, {
+    const researchResponse = await fetch(`${api}/researches`, {
       method: "GET",
     });
     if (!researchResponse.ok) throw new Error("Failed to fetch researchs");
