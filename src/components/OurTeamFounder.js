@@ -20,7 +20,7 @@ const OurTeamFounder = () => {
         ref={animationRef1}
       >
         <h6 className="text-[#00378A]">{languageContext === "english" ? <>Founder</> : <>Nhà Sáng Lập</>}</h6>
-        <h2 className="font-medium">{languageContext === "english" ? <>Do Thuc De</> : <>Đỗ Thục Đệ</>}</h2>
+        <h2 className="font-medium">Đỗ Thục Đệ</h2>
         <p>
         {languageContext === "english" ? (
               <>

@@ -24,9 +24,7 @@ const OurTeamMembers = ({ data }) => {
                 className="aspect-[4/3] rounded object-cover"
               />
               <h5 className=" text-[#00378A]">
-                {languageContext === "english"
-                  ? item.name.english
-                  : item.name.vietnamese}
+                item.name
               </h5>
               <p className="text-[#838B93">
                 {languageContext === "english"
