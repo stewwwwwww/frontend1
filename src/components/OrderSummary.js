@@ -163,6 +163,7 @@ const OrderSummary = () => {
               email: email,
               note: note,
             },
+            status: "Pending",
           }),
         },
       );
