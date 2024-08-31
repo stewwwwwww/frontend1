@@ -77,6 +77,7 @@ const Contact = () => {
             phoneNumber: phoneNumber,
             email: email,
             message: message,
+            status: "Pending"
           }),
         },
       );
