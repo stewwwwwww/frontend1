@@ -108,7 +108,7 @@ const OrderSummary = () => {
 
     try {
       const products = cartContext.cartList.map((item) => ({
-        name: item.itemName,
+        name: item.itemNameEnglish,
         productPrice: Number(item.itemTotal),
         productPromotionPrice: Number(item.itemSubtotal),
         productSubtotal: item.itemSubtotal * item.itemQuantity,
@@ -199,7 +199,7 @@ const OrderSummary = () => {
                   <div className="flex w-full justify-between">
                     <div className="flex h-full flex-col justify-between">
                       <div>
-                        <h4>{item.itemName}</h4>
+                        <h4>{item.English}</h4>
                         {item.itemSubtotal ? (
                           <h6 className="text-red-500 line-through">
                             {item.itemSubtotal.replace(
