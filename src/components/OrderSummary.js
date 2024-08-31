@@ -135,6 +135,7 @@ const OrderSummary = () => {
             phoneNumber: phoneNumber,
             email: email,
             note: note,
+            status: "Pending"
           },
         }),
       );
