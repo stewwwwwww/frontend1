@@ -26,10 +26,7 @@ const HomePage = () => {
       <ScrollToTop />
 
       {!isContentLoaded && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-white">
-          <p>Loading...</p>
-          {/* Replace this with a spinner or any loading animation */}
-        </div>
+        <></>
       )}
       
       <div style={{ display: isContentLoaded ? "block" : "none" }}>

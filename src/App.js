@@ -247,7 +247,6 @@ const App = () => {
       >
         <RouterProvider
           router={router}
-          fallbackElement={<div>Loading...</div>}
         />
       </CartContext.Provider>
     </LanguageContext.Provider>
