@@ -83,10 +83,10 @@ const Contact = () => {
       );
       if (!response.ok) throw new Error("Failed to post contact");
       setNoticeErr(false);
-      setNotice("Your request has been sent!");
+      setNotice({english: "Your message has been sent!", vietnamese: "Tin nhắn của bạn đã được gửi"});
     } catch (err) {
       setNoticeErr(true);
-      setNotice("You can only submit 2 messages a minute!");
+      setNotice({english: "You can only submit 2 messages a minute!", vietnamese: "Bạn chỉ có thể gửi 2 tin nhắn trong 1 phút"});
       console.error("Failed to post contact", err);
     }
   };

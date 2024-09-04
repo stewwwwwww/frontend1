@@ -130,8 +130,8 @@ const NavBar = () => {
       dropdown: [
         {
           name:
-            languageContext === "english" ? <>Researchs</> : <>Nghiên Cứu</>,
-          href: "/Insights/Researchs",
+            languageContext === "english" ? <>Researches</> : <>Nghiên Cứu</>,
+          href: "/Insights/Researches",
         },
         {
           name: languageContext === "english" ? <>Articles</> : <>Tin Tức</>,

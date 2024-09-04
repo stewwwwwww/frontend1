@@ -82,7 +82,7 @@ const NavBar = () => {
       navRef: navInsight,
       dropdownVisibility: insightVisibility,
       dropdown: [
-        { name: "Researchs", href: "/Insights/Researchs" },
+        { name: "Researches", href: "/Insights/Researches" },
         { name: "Articles", href: "/Insights/Articles" },
       ],
     },

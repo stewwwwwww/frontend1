@@ -4,6 +4,7 @@ import classNames from "classnames";
 import { isDesktop } from "react-device-detect";
 import { useContext } from "react";
 import { LanguageContext } from "../App.js";
+import { Link } from "react-router-dom";
 
 const Articles = ({ data }) => {
   const { languageContext } = useContext(LanguageContext);
@@ -51,13 +52,16 @@ const Articles = ({ data }) => {
                     ? item.description.english
                     : item.description.vietnamese}
                 </h5>
-                <a className="mt-16 text-[#00378A]">
-                  {languageContext === "english" ? (
-                    <>Learn more</>
-                  ) : (
-                    <>Xem thêm</>
+                <Link
+                  to={`/Insights/Articles/${item.name.english}`.replaceAll(
+                    /\s/g,
+                    "-",
                   )}
-                </a>
+                  className="text-[#00378A] mt- 16"
+                  state={item}
+                >
+                  {languageContext === "english" ? <>Learn More</>: <>Xem Thêm</>}
+                </Link>
               </div>
             </div>
           );

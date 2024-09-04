@@ -4,6 +4,7 @@ import classNames from "classnames";
 import { useAnimateContainer } from "../hooks/useAnimateContainer";
 import { useContext } from "react";
 import { LanguageContext } from "../App.js";
+import { Link } from "react-router-dom";
 
 const Research = ({ data }) => {
   const { languageContext } = useContext(LanguageContext);
@@ -15,12 +16,12 @@ const Research = ({ data }) => {
         ref={animationRef}
       >
         <h6 className="text-[#00378A]">
-          {languageContext === "english" ? <>Researchs</> : <>Nghiên Cứu</>}
+          {languageContext === "english" ? <>Researches</> : <>Nghiên Cứu</>}
         </h6>
         <h2 className="max-w-[50rem]">
           {languageContext === "english" ? (
             <>
-              Our latest and most trusted researchs to show effectiveness as
+              Our latest and most trusted researches to show effectiveness as
               well as efficacy.
             </>
           ) : (
@@ -56,12 +57,22 @@ const Research = ({ data }) => {
                   ? item.name.english
                   : item.name.vietnamese}
               </h4>
-              <p className="text-[#838B93] text-ellipsis">
+              <p className="text-ellipsis text-[#838B93]">
                 {languageContext === "english"
                   ? item.description.english
                   : item.description.vietnamese}
               </p>
-              <a className="text-[#00378A]">{languageContext === "english" ? <>Learn More</>: <>Tìm hiểu Thêm</>}</a>
+              <Link
+                to={`/Insights/Researches/${item.name.english.replaceAll(/\s/g, "-")}`}
+                className="text-[#00378A]"
+                state={item}
+              >
+                {languageContext === "english" ? (
+                  <>Learn more</>
+                ) : (
+                  <>Tìm Hiểu Thêm</>
+                )}
+              </Link>{" "}
             </div>
           );
         })}

@@ -67,7 +67,7 @@ const ResearchList = ({ data }) => {
                 className="text-[#00378A]"
                 state={research}
               >
-                Learn More
+                {languageContext === "english"? <>Learn more</>: <>Tìm Hiểu Thêm</>}
               </Link>
             </div>
           );

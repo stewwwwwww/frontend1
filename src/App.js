@@ -48,7 +48,7 @@ const router = createBrowserRouter([
     element: <Outlet />,
     children: [
       { index: true, element: <HomePage />, loader: fetchHome },
-      { element: <OrderPage />, path: "Order" },
+      { element: <OrderPage />, path: "Order", errorElement: <></> },
       {
         path: "AboutUs",
         children: [
@@ -88,7 +88,7 @@ const router = createBrowserRouter([
         path: "Insights",
         children: [
           {
-            path: "Researchs",
+            path: "Researches",
             children: [
               {
                 index: true,

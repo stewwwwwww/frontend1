@@ -73,7 +73,7 @@ export const fetchHome = async () => {
     const researchResponse = await fetch(`${api}/researches`, {
       method: "GET",
     });
-    if (!researchResponse.ok) throw new Error("Failed to fetch researchs");
+    if (!researchResponse.ok) throw new Error("Failed to fetch researches");
 
     const articleResponse = await fetch(`${api}/articles`, {
       method: "GET",
@@ -95,7 +95,7 @@ export const fetchAboutUs = async () => {
   try {
     const productResponse = await fetch(`${api}/products`);
     if (!productResponse.ok) throw new Error("Failed to fetch products");
-    const researchResponse = await fetch(`${api}/researchs`);
+    const researchResponse = await fetch(`${api}/researches`);
     if (!researchResponse.ok) throw new Error("Failed to fetch researchs");
     const memberResponse = await fetch(`${api}/members`);
     if (!memberResponse.ok) throw new Error("Failed to fetch researchs");
